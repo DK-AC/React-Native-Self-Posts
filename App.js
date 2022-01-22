@@ -1,7 +1,9 @@
 import {StatusBar} from 'expo-status-bar';
-import {Text, View} from 'react-native';
 import {useState} from "react";
 import AppLoading from "expo-app-loading";
+import {NavigationContainer} from "@react-navigation/native";
+import {AppNavigation} from "./src/navigation/AppNavigation";
+
 
 export default function App() {
 
@@ -16,9 +18,9 @@ export default function App() {
     }
 
     return (
-        <View>
-            <StatusBar style="auto"/>
-            <Text>Open up App.js to start working on your app!</Text>
-        </View>
+        <NavigationContainer>
+            <StatusBar style={'auto'}/>
+            <AppNavigation/>
+        </NavigationContainer>
     );
 }
