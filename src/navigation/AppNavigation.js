@@ -19,7 +19,7 @@ const config = {
 export const AppNavigation = () => {
     return (
         <Stack.Navigator initialRouteName="Main">
-            <Stack.Screen name={'Home'} component={MainScreen} options={config.default}/>
+            <Stack.Screen name={'Main'} component={MainScreen} options={config.default}/>
             <Stack.Screen name={'Post'} component={PostScreen} options={config.default}/>
             <Stack.Screen name={'Booked'} component={BookedScreen}/>
             <Stack.Screen name={'Create'} component={CreateScreen}/>
