@@ -1,18 +1,20 @@
 import React from "react";
-import {ImageBackground, StyleSheet, Text, View} from 'react-native'
+import {ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import {Theme} from "../theme";
 
-export const Post = ({item}) => {
+export const Post = ({item, goToPost}) => {
 
     return (
         <View>
-            <ImageBackground source={{uri: item.img}} style={styles.img}>
-                <View style={styles.textWrap}>
-                    <Text style={styles.title}>
-                        {new Date(item.date).toLocaleDateString()}
-                    </Text>
-                </View>
-            </ImageBackground>
+            <TouchableOpacity onPress={()=>goToPost(item)} activeOpacity={0.7}>
+                <ImageBackground source={{uri: item.img}} style={styles.img}>
+                    <View style={styles.textWrap}>
+                        <Text style={styles.title}>
+                            {new Date(item.date).toDateString()}
+                        </Text>
+                    </View>
+                </ImageBackground>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -24,15 +26,16 @@ const styles = StyleSheet.create({
     },
     img: {
         width: '100%',
-        height: 200
+        height: 200,
+        marginBottom:10
     },
     textWrap: {
         backgroundColor: 'rgba(0,0,0,0.5)',
         paddingVertical: 5,
         alignItems: 'center',
-        width: '100%'
+        width: '100%',
     },
     title: {
-        color: Theme.White_Color
+        color: Theme.White_Color,
     }
 });

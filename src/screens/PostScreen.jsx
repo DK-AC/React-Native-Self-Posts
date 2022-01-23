@@ -1,13 +1,29 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {Button, StyleSheet, Text, View} from "react-native";
 
 
-export const PostScreen = () => {
+export const PostScreen = ({navigation, route}) => {
+    const date = new Date(route.params.item.date).toLocaleDateString()
+
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            title: 'Пост от ' + date
+        });
+    }, [navigation]);
+
     return (
         <View style={styles.center}>
-            <Text>Post Screen</Text>
+            <Text>{route.params.item.id}</Text>
+            <Button title={'Go back'} onPress={() => navigation.goBack()}/>
+
         </View>
     )
+}
+PostScreen.screenOptions = ({route}) => {
+    console.log(route)
+    return {
+        headerTitle: 'Пост от ' + new Date(route.params.item.date).toLocaleDateString()
+    }
 }
 
 const styles = StyleSheet.create({

@@ -6,12 +6,12 @@ import {Post} from "../components/Post";
 
 export const MainScreen = ({navigation}) => {
 
-    const goPost = () => {
-        navigation.navigate('Post')
+    const goToPost = (item) => {
+        navigation.navigate('Post', {item})
     }
 
     const renderItem = ({item}) => (
-        <Post item={item}/>
+        <Post item={item} goToPost={goToPost}/>
     );
 
     return (
