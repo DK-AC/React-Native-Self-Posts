@@ -2,7 +2,7 @@ export const DATA = [
     {
         id: '1',
         img:
-            'https://static.coindesk.com/wp-content/uploads/2019/01/shutterstock_1012724596-860x430.jpg',
+            'https://www.belarus.by/apimages/30917.jpg',
         text: 'Awesome text for post 1',
         date: new Date().toJSON(),
         booked: true
@@ -18,7 +18,7 @@ export const DATA = [
     {
         id: '3',
         img:
-            'https://static.coindesk.com/wp-content/uploads/2019/01/shutterstock_1012724596-860x430.jpg',
+            'https://i2.wp.com/www.menstylefashion.com/wp-content/uploads/2020/03/dubai-panoramica-t.jpg?fit=750%2C450&ssl=1',
         text: 'Awesome text for post 3',
         date: new Date().toJSON(),
         booked: false
@@ -26,7 +26,7 @@ export const DATA = [
     {
         id: '4',
         img:
-            'https://cdn.londonandpartners.com/visit/general-london/areas/river/76709-640x360-houses-of-parliament-and-london-eye-on-thames-from-above-640.jpg',
+            'https://techcrunch.com/wp-content/uploads/2019/06/GettyImages-1008892442.jpg?w=730&crop=1',
         text: 'Awesome text for post 4',
         date: new Date().toJSON(),
         booked: false
