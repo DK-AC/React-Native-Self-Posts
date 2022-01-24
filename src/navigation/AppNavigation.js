@@ -50,6 +50,7 @@ const BookedNavigator = () => {
     return (
         <Stack.Navigator screenOptions={config.default}>
             <Stack.Screen name={'Booked'} component={BookedScreen}/>
+            <Stack.Screen name={'Post'} component={PostScreen}/>
         </Stack.Navigator>
     )
 }
