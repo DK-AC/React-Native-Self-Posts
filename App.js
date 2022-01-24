@@ -2,8 +2,8 @@ import {StatusBar} from 'expo-status-bar';
 import {useState} from "react";
 import AppLoading from "expo-app-loading";
 import {NavigationContainer} from "@react-navigation/native";
-import {AppNavigation} from "./src/navigation/AppNavigation";
 import {useFonts} from "expo-font";
+import {AppNavigation} from "./src/navigation/AppNavigation";
 
 
 export default function App() {
