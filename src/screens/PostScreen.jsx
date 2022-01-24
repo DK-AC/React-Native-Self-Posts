@@ -2,6 +2,8 @@ import React from "react";
 import {Alert, Button, Image, ScrollView, StyleSheet, Text} from "react-native";
 import {DATA} from "../data";
 import {Theme} from "../theme";
+import {HeaderButtons, Item} from "react-navigation-header-buttons";
+import {AppHeaderIcon} from "../components/AppHeaderIcon";
 
 
 export const PostScreen = ({navigation, route}) => {
@@ -12,7 +14,15 @@ export const PostScreen = ({navigation, route}) => {
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
-            title: 'Пост от ' + date
+            title: 'Пост от ' + date,
+            headerRight: () => (
+                <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+                    <Item title="booked"
+                          iconName={post.booked ? 'star' : 'star-o'}
+                          onPress={() => console.log('booked')}
+                    />
+                </HeaderButtons>
+            ),
         });
     }, [navigation]);
 
