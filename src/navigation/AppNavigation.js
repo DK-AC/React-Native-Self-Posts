@@ -26,7 +26,7 @@ const config = {
         tabBarIcon: () => (
             <FontAwesome name="tasks"
                          color={Platform.OS === 'android' ? Theme.White_Color : Theme.Main_Color}
-                         size={26}
+                         size={25}
             />
         ),
     },
@@ -39,7 +39,7 @@ const config = {
         tabBarIcon: () => (
             <FontAwesome name="star"
                          color={Platform.OS === 'android' ? Theme.White_Color : Theme.Main_Color}
-                         size={26}
+                         size={25}
             />
         ),
     },
