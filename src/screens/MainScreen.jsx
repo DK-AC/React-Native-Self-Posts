@@ -53,6 +53,6 @@ export const MainScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        padding: 10
+        padding:10
     }
 })

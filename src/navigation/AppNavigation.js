@@ -1,11 +1,11 @@
-import {PostScreen} from "../screens/PostScreen";
 import {createStackNavigator} from "@react-navigation/stack";
-import {MainScreen} from "../screens/MainScreen";
 import {Platform} from "react-native";
 import {Theme} from "../theme";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {FontAwesome} from "@expo/vector-icons";
 import React from "react";
+import {MainScreen} from "../screens/MainScreen";
+import {PostScreen} from "../screens/PostScreen";
 import {BookedScreen} from "../screens/BookedScreen";
 
 const Stack = createStackNavigator();
@@ -29,6 +29,12 @@ const config = {
             <FontAwesome name="star" color={Theme.Main_Color} size={26}/>
         ),
     },
+    tabNavigator: {
+        headerShown: false,
+        tabBarStyle: {
+            // backgroundColor: Theme.Main_Color
+        }
+    }
 }
 
 
@@ -52,7 +58,7 @@ const BookedNavigator = () => {
 const TabNavigation = () => {
 
     return (
-        <Tab.Navigator screenOptions={{headerShown: false}}>
+        <Tab.Navigator screenOptions={config.tabNavigator}>
             <Tab.Screen name="Post" component={PostNavigator} options={config.posts}/>
             <Tab.Screen name="Booked" component={BookedNavigator} options={config.booked}/>
         </Tab.Navigator>
