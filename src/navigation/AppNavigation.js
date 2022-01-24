@@ -18,21 +18,35 @@ const config = {
         headerTintColor: Platform.OS === "ios" ? Theme.Main_Color : Theme.White_Color,
     },
     posts: {
-        tabBarLabel: 'Posts',
+        tabBarLabel: 'Все',
+        tabBarLabelStyle: {
+            color: Theme.White_Color,
+            fontFamily: `Open_Sans_Bold`
+        },
         tabBarIcon: () => (
-            <FontAwesome name="tasks" color={Theme.Main_Color} size={26}/>
+            <FontAwesome name="tasks"
+                         color={Platform.OS === 'android' ? Theme.White_Color : Theme.Main_Color}
+                         size={26}
+            />
         ),
     },
     booked: {
-        tabBarLabel: 'Booked',
+        tabBarLabel: 'Избранное',
+        tabBarLabelStyle: {
+            color: Theme.White_Color,
+            fontFamily: `Open_Sans_Bold`
+        },
         tabBarIcon: () => (
-            <FontAwesome name="star" color={Theme.Main_Color} size={26}/>
+            <FontAwesome name="star"
+                         color={Platform.OS === 'android' ? Theme.White_Color : Theme.Main_Color}
+                         size={26}
+            />
         ),
     },
     tabNavigator: {
         headerShown: false,
         tabBarStyle: {
-            // backgroundColor: Theme.Main_Color
+            backgroundColor: Platform.OS === 'android' ? Theme.Main_Color : Theme.White_Color
         }
     }
 }

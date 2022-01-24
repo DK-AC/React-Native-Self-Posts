@@ -6,7 +6,7 @@ import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {AppHeaderIcon} from "../components/AppHeaderIcon";
 
 
-export const BookedScreen = ({navigation, route}) => {
+export const BookedScreen = ({navigation}) => {
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -21,8 +21,6 @@ export const BookedScreen = ({navigation, route}) => {
             ),
         });
     }, [navigation]);
-
-    console.log(route)
 
     const goToPost = (item) => {
         navigation.navigate('Post', {item})
