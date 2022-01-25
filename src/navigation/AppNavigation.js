@@ -1,6 +1,6 @@
+import {DrawerNavigator} from "./DrawerNavigator";
 import React from "react";
-import {TabNavigation} from "./TabNavigation";
 
 export const AppNavigation = () => {
-    return (<TabNavigation/>)
+    return (<DrawerNavigator/>)
 }
