@@ -4,6 +4,7 @@ import {DATA} from "../data";
 import {Post} from "../components/Post";
 import {AppHeaderIcon} from "../components/AppHeaderIcon";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
+import {platformAndroidWhiteColor} from "../navigation/configNavigation";
 
 
 export const MainScreen = ({navigation}) => {
@@ -15,6 +16,7 @@ export const MainScreen = ({navigation}) => {
                 <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
                     <Item title="camera"
                           iconName="camera"
+                          color={platformAndroidWhiteColor}
                           onPress={() => console.log('photo-camera')}
                     />
                 </HeaderButtons>
@@ -23,6 +25,7 @@ export const MainScreen = ({navigation}) => {
                 <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
                     <Item title="toggle bar"
                           iconName="bars"
+                          color={platformAndroidWhiteColor}
                           onPress={() => console.log('toggle bar')}
                     />
                 </HeaderButtons>

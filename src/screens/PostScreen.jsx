@@ -4,6 +4,7 @@ import {DATA} from "../data";
 import {Theme} from "../theme";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {AppHeaderIcon} from "../components/AppHeaderIcon";
+import {platformAndroidWhiteColor} from "../navigation/configNavigation";
 
 
 export const PostScreen = ({navigation, route}) => {
@@ -18,6 +19,7 @@ export const PostScreen = ({navigation, route}) => {
             headerRight: () => (
                 <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
                     <Item title="booked"
+                          color={platformAndroidWhiteColor}
                           iconName={post.booked ? 'star' : 'star-o'}
                           onPress={() => console.log('booked')}
                     />
