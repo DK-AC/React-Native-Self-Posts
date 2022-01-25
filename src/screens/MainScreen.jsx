@@ -1,10 +1,9 @@
 import React from "react";
-import {FlatList, StyleSheet, View} from "react-native";
-import {DATA} from "../data";
-import {Post} from "../components/Post";
 import {AppHeaderIcon} from "../components/AppHeaderIcon";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {platformAndroidWhiteColor} from "../navigation/configNavigation";
+import {PostList} from "../components/PostList";
+import {DATA} from "../data";
 
 
 export const MainScreen = ({navigation}) => {
@@ -33,29 +32,10 @@ export const MainScreen = ({navigation}) => {
         });
     }, [navigation]);
 
-    const goToPost = (item) => {
+    const goToPostHandler = (item) => {
         navigation.navigate('Post', {item})
     }
 
-    const renderItem = ({item}) => (
-        <Post item={item} goToPost={goToPost}/>
-    );
 
-
-    return (
-        <View style={styles.wrapper}>
-            <FlatList
-                data={DATA}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-            />
-        </View>
-
-    )
+    return <PostList data={DATA} goToPost={goToPostHandler}/>
 }
-
-const styles = StyleSheet.create({
-    wrapper: {
-        padding:10
-    }
-})
