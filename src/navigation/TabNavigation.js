@@ -15,6 +15,7 @@ export const TabNavigation = () => {
             ? <MaterialBottomTab.Navigator barStyle={configNavigation.materialBottomTabNavigation}
                                            shifting={true}
                                            activeColor={Theme.White_Color}
+                                           screenOptions={configNavigation.headerHide}
             >
                 <MaterialBottomTab.Screen name="Post"
                                           component={PostNavigator}
@@ -25,7 +26,7 @@ export const TabNavigation = () => {
                                           options={configNavigation.booked}
                 />
             </MaterialBottomTab.Navigator>
-            : <Tab.Navigator screenOptions={configNavigation.tabNavigator}>
+            : <Tab.Navigator screenOptions={configNavigation.headerHide}>
                 <Tab.Screen name="Post" component={PostNavigator} options={configNavigation.posts}/>
                 <Tab.Screen name="Booked" component={BookedNavigator} options={configNavigation.booked}/>
             </Tab.Navigator>

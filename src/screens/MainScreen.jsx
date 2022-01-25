@@ -25,7 +25,7 @@ export const MainScreen = ({navigation}) => {
                     <Item title="toggle bar"
                           iconName="bars"
                           color={platformAndroidWhiteColor}
-                          onPress={() => console.log('toggle bar')}
+                          onPress={() => navigation.toggleDrawer()}
                     />
                 </HeaderButtons>
             ),

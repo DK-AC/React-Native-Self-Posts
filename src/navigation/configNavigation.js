@@ -37,9 +37,10 @@ export const configNavigation = {
             />
         ),
     },
-    tabNavigator: {
+    headerHide: {
         headerShown: false,
-    },
+    }
+    ,
     materialBottomTabNavigation: {
         backgroundColor: Theme.Main_Color,
     }
