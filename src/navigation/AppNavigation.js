@@ -1,5 +1,4 @@
 import {createStackNavigator} from "@react-navigation/stack";
-import {Platform} from "react-native";
 import {Theme} from "../theme";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {FontAwesome} from "@expo/vector-icons";
@@ -7,22 +6,26 @@ import React from "react";
 import {MainScreen} from "../screens/MainScreen";
 import {PostScreen} from "../screens/PostScreen";
 import {BookedScreen} from "../screens/BookedScreen";
+import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
+import {Platform} from "react-native";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
+const MaterialBottomTab = createMaterialBottomTabNavigator()
 
 const config = {
     default: {
-        headerStyle: {backgroundColor: Platform.OS === "ios" ? Theme.White_Color : Theme.Main_Color},
-        headerTintColor: Platform.OS === "ios" ? Theme.Main_Color : Theme.White_Color,
+        headerStyle: {
+            backgroundColor: Platform.OS === 'ios' ? Theme.White_Color : Theme.Main_Color
+        },
+        headerTintColor: Platform.OS === 'ios' ? Theme.Main_Color : Theme.White_Color
     },
     posts: {
         tabBarLabel: 'Все',
         tabBarLabelStyle: {
-            color: Theme.White_Color,
-            fontFamily: `Open_Sans_Bold`
+            color: Platform.OS === 'android' ? Theme.White_Color : Theme.Main_Color,
         },
+
         tabBarIcon: () => (
             <FontAwesome name="tasks"
                          color={Platform.OS === 'android' ? Theme.White_Color : Theme.Main_Color}
@@ -33,8 +36,7 @@ const config = {
     booked: {
         tabBarLabel: 'Избранное',
         tabBarLabelStyle: {
-            color: Theme.White_Color,
-            fontFamily: `Open_Sans_Bold`
+            color: Platform.OS === 'android' ? Theme.White_Color : Theme.Main_Color
         },
         tabBarIcon: () => (
             <FontAwesome name="star"
@@ -45,10 +47,18 @@ const config = {
     },
     tabNavigator: {
         headerShown: false,
-        tabBarStyle: {
-            backgroundColor: Platform.OS === 'android' ? Theme.Main_Color : Theme.White_Color
-        }
+    },
+    materialBottomTab: {
+        labeled: false,
+
+
     }
+}
+
+const materialBottomTabNavigationStyle = {
+    backgroundColor: Theme.Main_Color,
+    shifting: true
+
 }
 
 
@@ -71,13 +81,21 @@ const BookedNavigator = () => {
 
 
 const TabNavigation = () => {
-
     return (
-        <Tab.Navigator screenOptions={config.tabNavigator}>
-            <Tab.Screen name="Post" component={PostNavigator} options={config.posts}/>
-            <Tab.Screen name="Booked" component={BookedNavigator} options={config.booked}/>
-        </Tab.Navigator>
+        Platform.OS === 'android'
+            ? <MaterialBottomTab.Navigator barStyle={materialBottomTabNavigationStyle}
+                                           shifting={true}
+                                           activeColor={Theme.White_Color}
+            >
+                <MaterialBottomTab.Screen name="Post" component={PostNavigator} options={config.posts}/>
+                <MaterialBottomTab.Screen name="Booked" component={BookedNavigator} options={config.booked}/>
+            </MaterialBottomTab.Navigator>
+            : <Tab.Navigator screenOptions={config.tabNavigator}>
+                <Tab.Screen name="Post" component={PostNavigator} options={config.posts}/>
+                <Tab.Screen name="Booked" component={BookedNavigator} options={config.booked}/>
+            </Tab.Navigator>
     )
+
 }
 
 export const AppNavigation = () => {
