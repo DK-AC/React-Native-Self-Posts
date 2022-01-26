@@ -13,14 +13,8 @@ export const PostScreen = ({navigation, route}) => {
     const dispatch = useDispatch()
 
     const postId = route.params.item.id
-    const allPosts = useSelector(state => state.post.allPosts)
+    const post = useSelector(state => state.post.allPosts.find(post => post.id === postId))
     const booked = useSelector(state => state.post.bookedPosts.some(post => post.id === postId))
-    const post = allPosts.find(i => i.id === postId)
-
-    // console.log('allPosts:',allPosts)
-    // console.log('booked:',booked)
-    // console.log('postId:',postId)
-
 
     const changeBookedHandler = useCallback(() => {
         dispatch(changeBookedAC(postId))
@@ -66,6 +60,10 @@ export const PostScreen = ({navigation, route}) => {
                 {text: "OK", onPress: () => dispatch(deletePostAC(postId))}
             ]
         );
+    }
+
+    if (!post) {
+        return null
     }
 
     return (
