@@ -5,6 +5,7 @@ import {Post} from "../components/Post";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {AppHeaderIcon} from "../components/AppHeaderIcon";
 import {PostList} from "../components/PostList";
+import {platformAndroidWhiteColor} from "../navigation/configNavigation";
 
 
 export const BookedScreen = ({navigation}) => {
@@ -16,7 +17,8 @@ export const BookedScreen = ({navigation}) => {
                 <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
                     <Item title="toggle bar"
                           iconName="bars"
-                          onPress={() => console.log('toggle bar')}
+                          onPress={() => navigation.toggleDrawer()}
+                          color={platformAndroidWhiteColor}
                     />
                 </HeaderButtons>
             ),
@@ -30,9 +32,3 @@ export const BookedScreen = ({navigation}) => {
     return <PostList data={DATA.filter(post => post.booked)} goToPost={goToPostHandler}/>
 
 }
-
-const styles = StyleSheet.create({
-    wrapper: {
-        padding: 10
-    }
-})
