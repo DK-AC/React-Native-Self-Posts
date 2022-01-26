@@ -1,4 +1,3 @@
-export const postTypes = {
-    LOAD_POSTS: 'LOAD_POSTS',
-    CHANGE_POST_BOOKED: 'CHANGE_POST_BOOKED'
-}
+export const LOAD_POSTS = 'LOAD_POSTS'
+export const CHANGE_POST_BOOKED = 'CHANGE_POST_BOOKED'
+export const DELETE_POST='DELETE_POST'

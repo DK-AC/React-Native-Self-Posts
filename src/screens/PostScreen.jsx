@@ -1,27 +1,53 @@
-import React from "react";
+import React, {useCallback, useEffect} from "react";
 import {Alert, Button, Image, ScrollView, StyleSheet, Text} from "react-native";
-import {DATA} from "../data";
 import {THEME} from "../THEME";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {AppHeaderIcon} from "../components/AppHeaderIcon";
 import {platformAndroidWhiteColor} from "../navigation/configNavigation";
+import {useDispatch, useSelector} from "react-redux";
+import {changeBookedAC, deletePostAC} from "../store/actions/postActions";
 
 
 export const PostScreen = ({navigation, route}) => {
-    const date = new Date(route.params.item.date).toLocaleDateString()
+
+    const dispatch = useDispatch()
+
     const postId = route.params.item.id
-    const post = DATA.find(i => i.id === postId)
+    const allPosts = useSelector(state => state.post.allPosts)
+    const booked = useSelector(state => state.post.bookedPosts.some(post => post.id === postId))
+    const post = allPosts.find(i => i.id === postId)
+
+    // console.log('allPosts:',allPosts)
+    // console.log('booked:',booked)
+    // console.log('postId:',postId)
+
+
+    const changeBookedHandler = useCallback(() => {
+        dispatch(changeBookedAC(postId))
+    }, [dispatch, postId])
+
+
+    useEffect(() => {
+        navigation.setParams(changeBookedHandler())
+    }, [changeBookedHandler])
+
+    useEffect(() => {
+        navigation.setParams(booked)
+    }, [booked])
 
 
     React.useLayoutEffect(() => {
+
+        const date = new Date(route.params.item.date).toLocaleDateString()
         navigation.setOptions({
+
             title: 'Пост от ' + date,
             headerRight: () => (
                 <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
                     <Item title="booked"
                           color={platformAndroidWhiteColor}
                           iconName={post.booked ? 'star' : 'star-o'}
-                          onPress={() => console.log('booked')}
+                          onPress={changeBookedHandler}
                     />
                 </HeaderButtons>
             ),
@@ -37,11 +63,10 @@ export const PostScreen = ({navigation, route}) => {
                     text: "Отмена",
                     style: "cancel"
                 },
-                {text: "OK", onPress: () => console.log("OK Pressed")}
+                {text: "OK", onPress: () => dispatch(deletePostAC(postId))}
             ]
         );
     }
-
 
     return (
         <ScrollView>
@@ -52,6 +77,7 @@ export const PostScreen = ({navigation, route}) => {
 
     )
 }
+
 PostScreen.screenOptions = ({route}) => {
     return {
         headerTitle: 'Пост от ' + new Date(route.params.item.date).toLocaleDateString()

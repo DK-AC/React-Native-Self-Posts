@@ -15,7 +15,7 @@ export const MainScreen = ({navigation}) => {
         dispatch(loadPostsAC())
     }, [dispatch])
 
-    const posts = useSelector(state => state.post.posts)
+    const posts = useSelector(state => state.post.allPosts)
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
