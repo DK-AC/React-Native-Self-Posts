@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     textCenter: {
-        fontFamily: 'Open_Sans_Regular',
+        fontFamily: 'open-regular',
         textAlign: "center",
     },
 

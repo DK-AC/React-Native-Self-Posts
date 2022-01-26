@@ -40,9 +40,9 @@ export const configNavigation = {
     headerHide: {
         headerShown: false,
         drawerLabelStyle: {
-            fontFamily: 'Open_Sans_Bold',
-            color: THEME.MAIN_COLOR
-        }
+            fontFamily: 'open-bold',
+        },
+        drawerActiveTintColor: THEME.MAIN_COLOR
     }
     ,
     materialBottomTabNavigation: {

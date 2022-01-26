@@ -25,7 +25,8 @@ export const AboutScreen = ({navigation}) => {
 
     return (
         <View style={styles.center}>
-            <Text>About Screen</Text>
+            <Text>Приложение для личных заметок.</Text>
+            <Text>Версия приложения<Text style={styles.boldText}> 1.0.0 </Text></Text>
         </View>
     )
 }
@@ -35,5 +36,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
+    },
+    boldText: {
+        fontFamily: 'open-bold'
     }
 })
