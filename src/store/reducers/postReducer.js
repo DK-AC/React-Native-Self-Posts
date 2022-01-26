@@ -1,13 +1,18 @@
-import {postActions} from "../actions/postActions";
+import {postTypes} from "../types/types";
 
-let initialState = {};
+let initialState = {
+    post: [],
+    booked: []
+};
 
 export const postReducer = (state = initialState, action) => {
     switch (action.type) {
-        // case 'CHANGE_POST_BOOKED':
-        //     return state.map(post => post.id === action.id
-        //             ? {...post, booked: action.booked}
-        //             : post)
+        case postTypes.LOAD_POSTS:
+            return {
+                ...state,
+                posts: action.payload,
+                booked: action.payload.filter(post => post.booked)
+            }
 
         default:
             return state
@@ -15,8 +20,3 @@ export const postReducer = (state = initialState, action) => {
 }
 
 
-export const changedBookedAC = (id, booked) => {
-    return {
-        type: postActions.CHANGE_POST_BOOKED, id, booked
-    }
-}
