@@ -1,9 +1,9 @@
 import {Platform} from "react-native";
-import {Theme} from "../theme";
+import {THEME} from "../THEME";
 import {FontAwesome} from "@expo/vector-icons";
 
-export const platformAndroidMainColor = Platform.OS === 'android' ? Theme.Main_Color : Theme.White_Color
-export const platformAndroidWhiteColor = Platform.OS === 'android' ? Theme.White_Color : Theme.Main_Color
+export const platformAndroidMainColor = Platform.OS === 'android' ? THEME.MAIN_COLOR : THEME.WHITE_COLOR
+export const platformAndroidWhiteColor = Platform.OS === 'android' ? THEME.WHITE_COLOR : THEME.MAIN_COLOR
 
 export const configNavigation = {
     default: {
@@ -39,9 +39,23 @@ export const configNavigation = {
     },
     headerHide: {
         headerShown: false,
+        drawerLabelStyle: {
+            fontFamily: 'Open_Sans_Bold',
+            color: THEME.MAIN_COLOR
+        }
     }
     ,
     materialBottomTabNavigation: {
-        backgroundColor: Theme.Main_Color,
-    }
+        backgroundColor: THEME.MAIN_COLOR,
+    },
+    drawerMain: {
+        title: 'Главная',
+
+    },
+    drawerAbout: {
+        title: 'О приложении'
+    },
+    drawerCreate: {
+        title: 'Создать пост'
+    },
 }

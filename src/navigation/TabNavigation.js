@@ -1,5 +1,5 @@
 import {Platform} from "react-native";
-import {Theme} from "../theme";
+import {THEME} from "../THEME";
 import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
 import {configNavigation} from "./configNavigation";
 import {PostNavigator} from "./PostNavigator";
@@ -14,7 +14,7 @@ export const TabNavigation = () => {
     return (Platform.OS === 'android'
             ? <MaterialBottomTab.Navigator barStyle={configNavigation.materialBottomTabNavigation}
                                            shifting={true}
-                                           activeColor={Theme.White_Color}
+                                           activeColor={THEME.WHITE_COLOR}
                                            screenOptions={configNavigation.headerHide}
             >
                 <MaterialBottomTab.Screen name="Post"

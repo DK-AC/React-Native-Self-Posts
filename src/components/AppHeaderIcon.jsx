@@ -1,7 +1,7 @@
 import React from "react";
 import {FontAwesome} from '@expo/vector-icons';
 import {HeaderButton,} from 'react-navigation-header-buttons';
-import {Theme} from "../theme";
+import {THEME} from "../THEME";
 import {Platform, StyleSheet} from 'react-native'
 
 
@@ -10,7 +10,7 @@ export const AppHeaderIcon = (props) => {
         <HeaderButton style={styles.headerButton}
                       IconComponent={FontAwesome}
                       iconSize={23}
-                      color={Platform.OS === 'ios' ? Theme.Main_Color : Theme.White_Color}
+                      color={Platform.OS === 'ios' ? THEME.MAIN_COLOR : THEME.WHITE_COLOR}
                       {...props}
         />
     )

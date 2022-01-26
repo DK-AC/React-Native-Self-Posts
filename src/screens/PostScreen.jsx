@@ -1,7 +1,7 @@
 import React from "react";
 import {Alert, Button, Image, ScrollView, StyleSheet, Text} from "react-native";
 import {DATA} from "../data";
-import {Theme} from "../theme";
+import {THEME} from "../THEME";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {AppHeaderIcon} from "../components/AppHeaderIcon";
 import {platformAndroidWhiteColor} from "../navigation/configNavigation";
@@ -47,7 +47,7 @@ export const PostScreen = ({navigation, route}) => {
         <ScrollView>
             <Image style={styles.img} source={{uri: post.img}}/>
             <Text style={styles.textCenter}>{post.text}</Text>
-            <Button color={Theme.Red_Color} title={'Delete'} onPress={removePostImgHandler}/>
+            <Button color={THEME.RED_COLOR} title={'Delete'} onPress={removePostImgHandler}/>
         </ScrollView>
 
     )

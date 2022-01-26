@@ -1,6 +1,6 @@
 import React from "react";
 import {ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
-import {Theme} from "../theme";
+import {THEME} from "../THEME";
 
 export const Post = ({item, goToPost}) => {
 
@@ -36,6 +36,6 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     title: {
-        color: Theme.White_Color,
+        color: THEME.WHITE_COLOR,
     }
 });
