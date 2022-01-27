@@ -1,5 +1,5 @@
 import {postReducer} from "../reducers/postReducer";
-import {changeBookedAC, deletePostAC} from "../actions/postActions";
+import {addPostAC, changeBookedAC, deletePostAC} from "../actions/postActions";
 
 let startState
 
@@ -64,6 +64,24 @@ describe('postReducer tests', () => {
         expect(endState.allPosts.length).toBe(2)
         expect(startState.allPosts[0].id).toBe('1')
         expect(endState.allPosts[0].id).toBe('2')
+    })
+
+    test('post should be add', () => {
+        const img = 'https://kyky-public-storage.s3.eu-central-1.amazonaws.com/image/file/21757/Demid2.jpg'
+        const post = {
+            img: img,
+            text: 'newPost',
+            date: new Date().toJSON(),
+            booked: false
+        }
+        const endState = postReducer(startState, addPostAC(post))
+
+        expect(startState.allPosts.length).toBe(3)
+        expect(endState.allPosts.length).toBe(4)
+        expect(startState.allPosts[0].id).toBe('1')
+        expect(startState.allPosts[0].text).toBe("Awesome text for post 1")
+        expect(endState.allPosts[0].text).toBe('newPost')
+
     })
 
 })
