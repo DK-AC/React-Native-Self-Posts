@@ -66,7 +66,7 @@ describe('postReducer tests', () => {
         expect(endState.allPosts[0].id).toBe('2')
     })
 
-    test('post should be add', () => {
+    test('post should be added', () => {
         const img = 'https://kyky-public-storage.s3.eu-central-1.amazonaws.com/image/file/21757/Demid2.jpg'
         const post = {
             img: img,
