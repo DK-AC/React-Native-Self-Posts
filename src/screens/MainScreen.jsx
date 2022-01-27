@@ -25,7 +25,7 @@ export const MainScreen = ({navigation}) => {
                     <Item title="camera"
                           iconName="camera"
                           color={platformAndroidWhiteColor}
-                          onPress={() => console.log('photo-camera')}
+                          onPress={() => navigation.navigate('Create Screen Drawer')}
                     />
                 </HeaderButtons>
             ),

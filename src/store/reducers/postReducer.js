@@ -32,8 +32,6 @@ export const postReducer = (state = initialState, action) => {
                 allPosts: state.allPosts.filter(post => post.id !== action.payload),
                 bookedPosts: state.bookedPosts.filter(post => post.id !== action.payload),
             }
-
-
         default:
             return state
     }
