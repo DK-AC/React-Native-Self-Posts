@@ -1,3 +1,6 @@
+import {postReducer} from "../reducers/postReducer";
+import {changeBookedAC} from "../actions/postActions";
+
 let startState
 
 beforeEach(() => {
@@ -39,6 +42,19 @@ describe('postReducer tests', () => {
         expect(allPosts).toEqual(startState.allPosts)
         expect(allPosts.length).toBe(3)
         expect(filteredBookedPost.length).toBe(2)
+    })
+
+
+    test('booked should be change', () => {
+
+        expect(startState.allPosts[2].booked).toBe(false)
+
+        const endState = postReducer(startState, changeBookedAC('3'))
+
+        expect(startState.allPosts[2].id).toBe('3')
+        expect(endState.allPosts[2].booked).toBeTruthy()
+        expect(startState.bookedPosts.length).toBe(0)
+        expect(endState.bookedPosts.length).toBe(3)
     })
 
 })
