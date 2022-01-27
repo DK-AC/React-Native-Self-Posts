@@ -1,5 +1,5 @@
 import {postReducer} from "../reducers/postReducer";
-import {changeBookedAC} from "../actions/postActions";
+import {changeBookedAC, deletePostAC} from "../actions/postActions";
 
 let startState
 
@@ -55,6 +55,15 @@ describe('postReducer tests', () => {
         expect(endState.allPosts[2].booked).toBeTruthy()
         expect(startState.bookedPosts.length).toBe(0)
         expect(endState.bookedPosts.length).toBe(3)
+    })
+
+    test('correct post should be remove', () => {
+        const endState = postReducer(startState, deletePostAC('1'))
+
+        expect(startState.allPosts.length).toBe(3)
+        expect(endState.allPosts.length).toBe(2)
+        expect(startState.allPosts[0].id).toBe('1')
+        expect(endState.allPosts[0].id).toBe('2')
     })
 
 })
