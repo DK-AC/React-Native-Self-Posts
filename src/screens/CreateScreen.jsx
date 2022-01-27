@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View} from "react-native";
+import {Button, Pressable, ScrollView, StyleSheet, Text, TextInput, View} from "react-native";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {AppHeaderIcon} from "../components/AppHeaderIcon";
 import {platformAndroidWhiteColor} from "../navigation/configNavigation";
@@ -7,11 +7,13 @@ import {THEME} from "../THEME";
 import {useDispatch} from "react-redux";
 import {addPostAC} from "../store/actions/postActions";
 import keyboard from "react-native-web/dist/exports/Keyboard";
+import {PhotoPicker} from "../components/PhotoPicker";
 
 
 export const CreateScreen = ({navigation}) => {
     const dispatch = useDispatch()
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState(null)
+    const [imgUri, setImgUri] = useState(null)
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -29,12 +31,9 @@ export const CreateScreen = ({navigation}) => {
         });
     }, [navigation]);
 
-    const img = 'https://kyky-public-storage.s3.eu-central-1.amazonaws.com/image/file/21757/Demid2.jpg'
-
-
     const savePostHandler = () => {
         const post = {
-            img: img,
+            img: imgUri,
             text: value,
             date: new Date().toJSON(),
             booked: false
@@ -43,6 +42,8 @@ export const CreateScreen = ({navigation}) => {
         navigation.navigate('Main')
     }
     const hideKeyBoardHandler = () => keyboard.dismiss()
+    const onPick = (uri) => setImgUri(uri)
+
 
     return (
         <ScrollView>
@@ -56,13 +57,11 @@ export const CreateScreen = ({navigation}) => {
                         placeholder={'Введите описание поста'}
                         multiline
                     />
-                    <Image
-                        style={styles.image}
-                        source={{uri: (img)}}
-                    />
+                    <PhotoPicker onPick={onPick}/>
                     <Button title={'Создать пост'}
                             onPress={savePostHandler}
                             color={THEME.MAIN_COLOR}
+                            disabled={!value || !imgUri}
                     />
                 </View>
             </Pressable>

@@ -17,12 +17,11 @@ const askForPermissions = async () => {
 };
 
 
-export const PhotoPicker = () => {
+export const PhotoPicker = ({onPick}) => {
     const [image, setImage] = useState(null);
 
     const takePhoto = async () => {
         const hasPermissions = await askForPermissions()
-
         if (!hasPermissions) {
             return
         }
@@ -32,21 +31,22 @@ export const PhotoPicker = () => {
             allowsEditing: false,
             aspect: [16, 9]
         })
-        console.log(pickImage)
+        setImage(pickImage.uri)
+        onPick(pickImage.uri)
+
     }
 
     return (
         <View style={styles.wrapper}>
-            <Button title="Pick an image from camera roll" onPress={takePhoto}/>
-            <Button title="request permissions" onPress={askForPermissions}/>
-            {image && <Image source={{uri: image}} style={styles.img}/>}
+            <Button title='Сделать фото' onPress={takePhoto}/>
+            {image && <Image style={styles.img} source={{uri: image}}/>}
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     wrapper: {
-        marginBottom:10
+        marginBottom: 10
     },
     img: {
         width: '100%',
