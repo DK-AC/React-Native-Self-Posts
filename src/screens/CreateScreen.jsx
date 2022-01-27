@@ -77,9 +77,10 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: "center",
-        fontFamily: 'open-bold',
-        fontSize: 16,
-        color: THEME.MAIN_COLOR
+        fontFamily: 'open-regular',
+        fontSize: 18,
+        color: THEME.MAIN_COLOR,
+
     },
     input: {
         borderBottomWidth: 1,
@@ -88,6 +89,7 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: 200,
-        marginBottom: 10
+        marginBottom: 10,
+        padding: 10
     }
 })
