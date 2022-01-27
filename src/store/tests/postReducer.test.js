@@ -32,6 +32,13 @@ beforeEach(() => {
 describe('postReducer tests', () => {
 
     test('all posts must be uploaded', () => {
+        const allPosts = startState.allPosts
+        const filteredBookedPost = allPosts.filter(post => post.booked)
+
+
+        expect(allPosts).toEqual(startState.allPosts)
+        expect(allPosts.length).toBe(3)
+        expect(filteredBookedPost.length).toBe(2)
     })
 
 })
