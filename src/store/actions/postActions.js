@@ -1,8 +1,7 @@
-import {DATA} from "../../data";
 import {ADD_POST, CHANGE_POST_BOOKED, DELETE_POST, LOAD_POSTS} from "../types/types";
 
 export const loadPostsAC = () => {
-    return {type: LOAD_POSTS, payload: DATA}
+    return {type: LOAD_POSTS, payload: []}
 }
 
 export const changeBookedAC = (id) => {
