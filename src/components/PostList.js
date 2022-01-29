@@ -17,7 +17,6 @@ export const PostList = ({data, goToPost}) => {
         )
     }
 
-
     return (
         <View style={styles.wrapper}>
             <FlatList
