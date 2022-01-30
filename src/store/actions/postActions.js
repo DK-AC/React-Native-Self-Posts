@@ -1,7 +1,11 @@
 import {ADD_POST, CHANGE_POST_BOOKED, DELETE_POST, LOAD_POSTS} from "../types/types";
+import {DB} from "../../database";
 
 export const loadPostsAC = () => {
-    return {type: LOAD_POSTS, payload: []}
+    return async dispatch => {
+        const posts = await DB.getPosts()
+        dispatch({type: LOAD_POSTS, payload: posts})
+    }
 }
 
 export const changeBookedAC = (id) => {

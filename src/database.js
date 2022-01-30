@@ -16,7 +16,7 @@ export class DB {
         })
     }
 
-    static get() {
+    static getPosts() {
         return new Promise((resolve, reject) => {
             db.transaction(tx => {
                 tx.executeSql(
