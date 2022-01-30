@@ -15,4 +15,17 @@ export class DB {
             })
         })
     }
+
+    static get() {
+        return new Promise((resolve, reject) => {
+            db.transaction(tx => {
+                tx.executeSql(
+                    'select * from posts',
+                    [],
+                    (_, result) => resolve(result.rows._array),
+                    (_, error) => reject(error)
+                )
+            })
+        })
+    }
 }
