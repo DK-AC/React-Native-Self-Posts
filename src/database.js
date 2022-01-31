@@ -55,5 +55,18 @@ export class DB {
         })
     }
 
+    static deletePost(id) {
+        return new Promise((resolve, reject) => {
+            db.transaction(tx => {
+                tx.executeSql(
+                    `DELETE FROM posts WHERE id = ?`,
+                    [id],
+                    resolve,
+                    (_, error) => reject(error)
+                )
+            })
+        })
+    }
+
 
 }
