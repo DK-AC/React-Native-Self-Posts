@@ -26,7 +26,7 @@ export const PostScreen = ({navigation, route}) => {
     }, [changeBookedHandler])
 
     useEffect(() => {
-        navigation.setParams(booked)
+        navigation.setParams({booked})
     }, [booked])
 
 

@@ -3,7 +3,7 @@ import {FlatList, StyleSheet, Text, View} from "react-native";
 import {Post} from "./Post";
 
 
-export const PostList = ({data, goToPost}) => {
+export const PostList = ({data=[], goToPost}) => {
 
     const renderItem = ({item}) => (
         <Post item={item} goToPost={goToPost}/>
