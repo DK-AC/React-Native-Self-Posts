@@ -9,12 +9,14 @@ export const loadPostsAC = () => {
     }
 }
 
-export const changePostAC = (id) => {
-    return {type: CHANGE_POST_BOOKED, payload: id}
+export const changePostAC = (post) => async dispatch => {
+    await DB.updatePost(post)
+    dispatch({type: CHANGE_POST_BOOKED, payload: post.id})
 }
 
-export const deletePostAC = (id) => {
-    return {type: DELETE_POST, payload: id}
+export const deletePostAC = (id) => async dispatch => {
+    await DB.deletePost(id)
+    dispatch({type: DELETE_POST, payload: id})
 }
 
 export const addPostAC = post => async dispatch => {

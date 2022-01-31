@@ -17,7 +17,7 @@ export const PostScreen = ({navigation, route}) => {
     const booked = useSelector(state => state.post.bookedPosts.some(post => post.id === postId))
 
     const changeBookedHandler = useCallback(() => {
-        dispatch(changePostAC(postId))
+        dispatch(changePostAC(post))
     }, [dispatch, postId])
 
 
