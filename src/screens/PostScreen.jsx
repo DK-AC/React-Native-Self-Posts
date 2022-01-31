@@ -5,7 +5,7 @@ import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {AppHeaderIcon} from "../components/AppHeaderIcon";
 import {platformAndroidWhiteColor} from "../navigation/configNavigation";
 import {useDispatch, useSelector} from "react-redux";
-import {changeBookedAC, deletePostAC} from "../store/actions/postActions";
+import {changePostAC, deletePostAC} from "../store/actions/postActions";
 
 
 export const PostScreen = ({navigation, route}) => {
@@ -17,7 +17,7 @@ export const PostScreen = ({navigation, route}) => {
     const booked = useSelector(state => state.post.bookedPosts.some(post => post.id === postId))
 
     const changeBookedHandler = useCallback(() => {
-        dispatch(changeBookedAC(postId))
+        dispatch(changePostAC(postId))
     }, [dispatch, postId])
 
 

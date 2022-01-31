@@ -9,7 +9,7 @@ export const loadPostsAC = () => {
     }
 }
 
-export const changeBookedAC = (id) => {
+export const changePostAC = (id) => {
     return {type: CHANGE_POST_BOOKED, payload: id}
 }
 

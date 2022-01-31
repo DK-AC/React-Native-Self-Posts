@@ -1,5 +1,5 @@
 import {postReducer} from "../reducers/postReducer";
-import {addPostAC, changeBookedAC, deletePostAC} from "../actions/postActions";
+import {addPostAC, changePostAC, deletePostAC} from "../actions/postActions";
 
 let startState
 
@@ -49,7 +49,7 @@ describe('postReducer tests', () => {
 
         expect(startState.allPosts[2].booked).toBe(false)
 
-        const endState = postReducer(startState, changeBookedAC('3'))
+        const endState = postReducer(startState, changePostAC('3'))
 
         expect(startState.allPosts[2].id).toBe('3')
         expect(endState.allPosts[2].booked).toBeTruthy()
