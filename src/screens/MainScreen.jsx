@@ -5,6 +5,8 @@ import {platformAndroidWhiteColor} from "../navigation/configNavigation";
 import {PostList} from "../components/PostList";
 import {useDispatch, useSelector} from "react-redux";
 import {loadPostsAC} from "../store/actions/postActions";
+import {ActivityIndicator, StyleSheet, View} from "react-native";
+import {THEME} from "../THEME";
 
 
 export const MainScreen = ({navigation}) => {
@@ -16,6 +18,7 @@ export const MainScreen = ({navigation}) => {
     }, [dispatch])
 
     const posts = useSelector(state => state.post.allPosts)
+    const loading = useSelector(state => state.post.loading)
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -45,6 +48,23 @@ export const MainScreen = ({navigation}) => {
         navigation.navigate('Post', {item})
     }
 
+    if (loading) {
+        return (
+            <View style={styles.center}>
+                <ActivityIndicator color={THEME.MAIN_COLOR}/>
+            </View>
+        )
+    }
+
 
     return <PostList data={posts} goToPost={goToPostHandler}/>
 }
+
+
+const styles = StyleSheet.create({
+    center: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: 'center'
+    }
+})
